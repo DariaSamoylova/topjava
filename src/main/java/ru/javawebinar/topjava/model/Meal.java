@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Meal {
+    private static volatile int count = 0;
     private final LocalDateTime dateTime;
-
     private final String description;
 
     private final int calories;
@@ -15,6 +15,7 @@ public class Meal {
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
+        count++;
     }
 
     public LocalDateTime getDateTime() {
