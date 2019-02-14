@@ -9,7 +9,14 @@
 <h3><a href="index.html">Home</a></h3>
 <h2>Meals</h2>
 
+<table>
+    <tr>
+        <td><a href="meals?action=create">Добавить запись</a></td>
 
+
+    </tr>
+
+</table>
 <table border="1">
     <thead>
     <th>Дата</th>
@@ -25,7 +32,8 @@
             <td><fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${parsedDateTime}"/></td>
             <td>${meal.description}</td>
             <td>${meal.calories}</td>
-
+            <td><a href="meals?action=update&id=${meal.id}">Редакт.</a>
+                <a href="meals?action=delete&id=${meal.id}">Удал.</a></td>
         </tr>
     </c:forEach>
 </table>
