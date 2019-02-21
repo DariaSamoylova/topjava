@@ -14,6 +14,12 @@
         .excess {
             color: red;
         }
+
+        dl {
+            background: none repeat scroll 0 0 #FAFAFA;
+            margin: 8px 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -22,6 +28,42 @@
     <h2>Meals</h2>
     <a href="meals?action=create">Add Meal</a>
     <hr/>
+    <table>
+        <thead>
+        <tr>
+            <th>От даты</th>
+            <th>До даты</th>
+            <th>От времени</th>
+            <th>До времени</th>
+
+        </tr>
+        </thead>
+
+        <tr>
+            <form method="get" action="meals">
+                <input type="hidden" name="filter" value="filter">
+                <td>
+                    <dd><input type="date" name="date1"></dd>
+                </td>
+                <td>
+                    <dd><input type="date" name="date2"></dd>
+                </td>
+                <td>
+                    <dd><input type="time" name="time1"></dd>
+                </td>
+                <td>
+                    <dd><input type="time" name="time2"></dd>
+                </td>
+                <button type="submit">Фильтровать</button>
+
+            </form>
+
+
+        </tr>
+
+    </table>
+
+
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>

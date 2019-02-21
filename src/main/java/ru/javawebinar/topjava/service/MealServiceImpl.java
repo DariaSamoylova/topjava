@@ -6,6 +6,8 @@ import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -55,6 +57,14 @@ public class MealServiceImpl implements MealService {
         List<Meal> mealList = (List<Meal>) repository.getAll(userId);
         if (mealList.isEmpty())
             throw new NotFoundException("no meals owned by user with userid = " + userId);
+        return mealList;
+    }
+
+    @Override
+    public List<Meal> getAllToFiltered(LocalDate d1, LocalDate d2, LocalTime t1, LocalTime t2, Integer userId) {
+        List<Meal> mealList = repository.getAllToFiltered(d1, d2, t1, t2, userId);
+        if (mealList.isEmpty())
+            throw new NotFoundException("no meals with this parameters owned by user with userid = " + userId);
         return mealList;
     }
 }
