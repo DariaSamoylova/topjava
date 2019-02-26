@@ -15,10 +15,10 @@ INSERT INTO user_roles (role, user_id)
 VALUES ('ROLE_USER', 100000),
        ('ROLE_ADMIN', 100001);
 
-INSERT INTO meals (user_id, description, calories)
-VALUES (100000, 'Breakfast', 500),
-       (100000, 'Dinner', 500),
-       (100000, 'Supper', 500),
-       (100001, 'Breakfast', 500),
-       (100001, 'Dinner', 500),
-       (100001, 'Supper', 1800);
+INSERT INTO meals (user_id, description, calories, dateTime)
+VALUES (100000, 'Breakfast', 500, '2019-02-26 09:00' :: timestamp),
+       (100000, 'Dinner', 500, '2019-02-26 14:00' :: timestamp),
+       (100000, 'Supper', 500, '2019-02-26 19:00' :: timestamp),
+       (100001, 'Breakfast', 500, '2019-02-26 09:00' :: timestamp),
+       (100001, 'Dinner', 500, '2019-02-26 14:00' :: timestamp),
+       (100001, 'Supper', 1800, '2019-02-26 19:00' :: timestamp);
