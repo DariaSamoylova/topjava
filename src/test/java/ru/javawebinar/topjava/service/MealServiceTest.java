@@ -1,9 +1,14 @@
 package ru.javawebinar.topjava.service;
 
+import org.junit.AssumptionViolatedException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.rules.TestRule;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
+import org.junit.runners.model.Statement;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,9 +32,43 @@ import static ru.javawebinar.topjava.UserTestData.USER_ID;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 public class MealServiceTest {
-
+    private static String watchedLog;
     @Rule
     public ExpectedException thrown = ExpectedException.none();
+
+    @Rule
+    public final TestRule watchman = new TestWatcher() {
+        @Override
+        public Statement apply(Statement base, Description description) {
+            return super.apply(base, description);
+        }
+
+        @Override
+        protected void succeeded(Description description) {
+            watchedLog += description.getDisplayName() + " " + "success!\n";
+        }
+
+        @Override
+        protected void failed(Throwable e, Description description) {
+            watchedLog += description.getDisplayName() + " " + e.getClass().getSimpleName() + "\n";
+        }
+
+        @Override
+        protected void skipped(AssumptionViolatedException e, Description description) {
+            watchedLog += description.getDisplayName() + " " + e.getClass().getSimpleName() + "\n";
+        }
+
+        @Override
+        protected void starting(Description description) {
+            super.starting(description);
+        }
+
+        @Override
+        protected void finished(Description description) {
+            super.finished(description);
+        }
+    };
+
 
     static {
         SLF4JBridgeHandler.install();
