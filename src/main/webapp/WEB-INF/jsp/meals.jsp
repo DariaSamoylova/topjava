@@ -1,16 +1,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://topjava.javawebinar.ru/functions" %>
+<%@ taglib prefix="fn1" uri="http://topjava.javawebinar.ru/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
-<head>
-    <title>Calories management</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<%--<jsp:include page="fragments/headTag.jsp"/>--%>
+<%--<head>--%>
+<%--<title>Calories management</title>--%>
+<%--<link rel="stylesheet" href="css/style.css">--%>
+<%--</head>--%>
+<%--<head>--%>
+<%--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
+<%--<title><spring:message code="app.title"/></title>--%>
+<%--<c:set var="url">${pageContext.request.requestURL}</c:set>--%>
+<%--<base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/" />--%>
+<%--<link rel="stylesheet" href="resources/css/style.css">--%>
+<%--</head>--%>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+
 <section>
     <h3>Meals</h3>
-    <form method="post" action="meals?action=filter">
+    <form method="post" action="${pageContext.request.contextPath}/meals/filter">
         <dl>
             <dt>From Date:</dt>
             <dd><input type="date" name="startDate" value="${param.startDate}"></dd>
@@ -49,7 +62,7 @@
                         <%--${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}--%>
                         <%--<%=TimeUtil.toString(meal.getDateTime())%>--%>
                         <%--${fn:replace(meal.dateTime, 'T', ' ')}--%>
-                        ${fn:formatDateTime(meal.dateTime)}
+                        ${fn1:formatDateTime(meal.dateTime)}
                 </td>
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>
