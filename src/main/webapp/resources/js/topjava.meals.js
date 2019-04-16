@@ -23,6 +23,14 @@ $(function () {
             },
             "paging": false,
             "info": true,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                if (aData.excess) {
+                    $(nRow).css('color', 'red');
+                }
+                else {
+                    $(nRow).css('color', 'green');
+                }
+            },
             "columns": [
                 {
                     "data": "dateTime"
