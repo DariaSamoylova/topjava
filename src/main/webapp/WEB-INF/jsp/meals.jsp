@@ -135,4 +135,7 @@
     i18n["${key}"] = "<spring:message code="${key}"/>";
     </c:forEach>
 </script>
+<link rel="stylesheet" type="text/css" href="js/jquery.datetimepicker.css"/>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.datetimepicker.js"></script>
 </html>
